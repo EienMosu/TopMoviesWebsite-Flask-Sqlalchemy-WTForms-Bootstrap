@@ -11,7 +11,7 @@ MOVIE_DB_INFO_URL = "https://api.themoviedb.org/3/movie"
 MOVIE_DB_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = 'secret_key'
 Bootstrap(app)
 
 
@@ -100,7 +100,7 @@ def add():
     if add_form.validate_on_submit():
         try_form = TryAgain()
         movie_name = add_form.title.data
-        API = 'e656fa189fb3e5a973e13fc39ca93893'
+        API = 'api_key'
         url = 'https://api.themoviedb.org/3/search/movie'
 
         params = {
@@ -121,7 +121,7 @@ def find():
     movie_api_id = request.args.get("id")
     if movie_api_id:
         movie_api_url = f"{MOVIE_DB_INFO_URL}/{movie_api_id}"
-        API = 'e656fa189fb3e5a973e13fc39ca93893'
+        API = 'api_key'
 
         response = requests.get(movie_api_url, params={"api_key": API, "language": "en-US"})
         data = response.json()
